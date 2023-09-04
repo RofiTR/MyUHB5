@@ -51,7 +51,74 @@ class WellcomePage extends StatelessWidget {
             height : 60,
             width: MediaQuery.of(context).size.width -2 * defaultMargin,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+               //NOTE: TAMPILKAN MODAL REGISTER
+               showModalBottomSheet(
+                isScrollControlled: true,
+                context: context, builder: (context){
+                  return StatefulBuilder(
+                    builder: 
+                    (BuildContext context, StateSetter setState) {
+                    return Wrap(
+                      children: [
+                        Container(
+                          color: Colors.transparent,
+                          child: Container( 
+                            // margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                            decoration: BoxDecoration(
+                            color: secondaryColor,
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(46),
+                            topLeft: Radius.circular(46))),
+                            child: Container(
+                              margin: EdgeInsets.symmetric(
+                                horizontal: defaultMargin),
+                              child: Column (
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  //JARAK
+                              SizedBox(height: 25,),
+                                Row(
+
+                                  children: [
+                                  Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("helo...", style: whiteTextStyle.copyWith(fontSize: 20, color: blackColor),
+                                      ),
+                                      Text("register", style: whiteTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 30, color: blackColor),
+                                      ),
+                            
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  Center(
+                                    child: InkWell
+                                    (onTap: (){
+                                      //KETIKA ICON DI TEKAN 
+                                      Navigator.pop(context);
+                                    },
+                                      child: Image.asset('assets/images/close.png', 
+                                      height : 30, 
+                                      width: 30, 
+                                      ),
+                                    ),
+                                  )
+                                  
+                                ],
+                                ),
+                              SizedBox()
+                              ],
+                              ),
+                            )
+                          ),
+                        )
+                      ],
+                    );
+                  },
+                  );
+                }
+               );
+              },
               child: Text(
                 'login',
                 style: whiteTextStyle.copyWith(
